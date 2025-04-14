@@ -18,27 +18,24 @@ public class TesteFinal {
         driver.get("http://localhost:8080/producao");
     }
 
-    //@Test
-    public void clicar(){
-        WebElement clicar = driver.findElement(By.className("button-link"));
-        clicar.click();
-    }
-
-    //@Test
+    @Test
     public void preencher(){
+        WebElement clicar = driver.findElement(By.className("button-link")); //Aperta "Nova Produção"
+        clicar.click();
+
         WebElement nome = driver.findElement(By.xpath("//*[@id=\"nome\"]"));
         WebElement tipo = driver.findElement(By.xpath("//*[@id=\"tipo\"]"));
         WebElement quantidade = driver.findElement(By.xpath("//*[@id=\"quantidade\"]"));
 
         nome.sendKeys("Poligono");
         tipo.sendKeys("forma geométrica");
-        quantidade.sendKeys("65656");
+        quantidade.sendKeys("1");
 
-        WebElement clicar = driver.findElement(By.xpath("/html/body/form/button"));
-        clicar.click();
+        WebElement clicar2 = driver.findElement(By.xpath("/html/body/form/button")); //Aperta "Salvar"
+        clicar2.click();
     }
 
-    //@Test
+    @Test
     public void deletar() {
         List<WebElement> linhas = driver.findElements(By.xpath("//table//tr[td]"));
 
@@ -56,9 +53,9 @@ public class TesteFinal {
         List<WebElement> linhas = driver.findElements(By.xpath("//table//tr[td]"));
 
         for (WebElement linha : linhas){
-            if (linha.getText().contains("kdasllkIvan")){
+            if (linha.getText().contains("Inglaterra")){
                 WebElement clicar = linha.findElement(By.xpath("/html/body/table/tbody/tr[1]/td[5]/a"));
-                clicar.click();
+                clicar.click(); //clica em "Editar"
 
                 WebElement nome = driver.findElement(By.xpath("//*[@id=\"nome\"]"));
                 WebElement tipo = driver.findElement(By.xpath("//*[@id=\"tipo\"]"));
@@ -68,9 +65,9 @@ public class TesteFinal {
                 tipo.clear();
                 quantidade.clear();
 
-                nome.sendKeys("Pingu");
-                tipo.sendKeys("desebgi");
-                quantidade.sendKeys("217839");
+                nome.sendKeys("Rio de Janeiro");
+                tipo.sendKeys("Rio");
+                quantidade.sendKeys("12345");
 
                 WebElement clicar2 = driver.findElement(By.xpath("/html/body/form/button"));
                 clicar2.click();
@@ -79,6 +76,4 @@ public class TesteFinal {
         }
 
     }
-
-
 }
